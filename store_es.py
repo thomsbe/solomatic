@@ -1,6 +1,14 @@
-import pika
 import json
+
+import pika
 from elasticsearch import Elasticsearch
+
+
+def store_es(ch, method, properties, body):
+    print " Empfangen: %r" % (body,)
+    es = Elasticsearch([{"host": "sldev", "port": 9200}])
+    es.index(index="messages", doc_type="message", body=json.loads(body))
+
 
 HOST = 'sldev'
 CRED = pika.PlainCredentials('admin', 'admin')
@@ -18,11 +26,5 @@ channel.queue_bind(exchange='solongo',
 
 print "-- running --"
 
-
-def callback(ch, method, properties, body):
-    print " Empfangen: %r" % (body,)
-    es = Elasticsearch([{"host": "sldev", "port": 9200}])
-    es.index(index="messages", doc_type="message", body=json.loads(body))
-
-channel.basic_consume(callback, queue=queue_name, no_ack=True)
+channel.basic_consume(store_es, queue=queue_name, no_ack=True)
 channel.start_consuming()
