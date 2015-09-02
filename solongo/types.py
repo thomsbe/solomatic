@@ -1,6 +1,7 @@
-class MsgTemp:
-    def __init__(self, temp):
+class MsgClima:
+    def __init__(self, temp, hum):
         self.temp = temp
+        self.hum = hum
         self.type = "fhem.temp.read"
         self.source = "fhem.reader"
         self.device = "script"

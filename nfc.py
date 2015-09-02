@@ -2,15 +2,17 @@
 
 # ReadNFC
 # Thomas Baer
-
+import json
 import logging
 import logging.handlers
 import httplib
 import time
 import re
-import nxppy
 
+import nxppy
 import RPi.GPIO as GPIO
+from solongo.rmqtools import publish
+from solongo.types import MsgNfc
 
 LOG_FILENAME = "/var/log/nfc.log"
 LOG_LEVEL = logging.INFO
@@ -63,6 +65,12 @@ while True:
             logger.info("Chip read:" + uid1)
             conn = httplib.HTTPConnection(SERVER, 80, timeout=5)
             conn.request("GET", URI + uid1)
+
+            nfc = MsgNfc(uid1)
+            message = json.dumps(nfc, default=lambda o: o.__dict__)
+
+            publish(message)
+
             r = conn.getresponse()
             if r.status == 200:
                 ret = r.getheader('X-Return')
