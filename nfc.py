@@ -8,9 +8,10 @@ import logging.handlers
 import httplib
 import time
 import re
-
 import nxppy
+
 import RPi.GPIO as GPIO
+
 from solongo.rmqtools import publish
 from solongo.types import MsgNfc
 
