@@ -9,16 +9,6 @@ ON = GPIO.HIGH
 OFF = GPIO.LOW
 
 
-def blinkled(led, duration, piep):
-    GPIO.output(led, ON)
-    if piep:
-        GPIO.output(PIEP, ON)
-    time.sleep(duration)
-    GPIO.output(led, OFF)
-    if piep:
-        GPIO.output(PIEP, OFF)
-
-
 def init_gpio():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
@@ -29,6 +19,15 @@ def init_gpio():
     GPIO.output(GREEN, OFF)
     GPIO.output(PIEP, OFF)
 
+
+def blinkled(led, duration, piep):
+    GPIO.output(led, ON)
+    if piep:
+        GPIO.output(PIEP, ON)
+    time.sleep(duration)
+    GPIO.output(led, OFF)
+    if piep:
+        GPIO.output(PIEP, OFF)
 
 def init_mifare():
     mifare = nxppy.Mifare()
