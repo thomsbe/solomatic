@@ -1,5 +1,3 @@
-__author__ = 'Thomas'
-
 import logging
 import logging.handlers
 
