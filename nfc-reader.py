@@ -19,4 +19,4 @@ while True:
         message = json.dumps(nfc, default=lambda o: o.__dict__)
         logger.info("Publish: " + message)
         publish(message)
-        time.sleep(3)
+    time.sleep(3)
