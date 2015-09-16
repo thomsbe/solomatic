@@ -13,10 +13,13 @@ mifare = init_mifare()
 
 while True:
     uid = get_uid(mifare, RED, 0.1, logger)
+    print uid
+    print
     if uid is not None:
         logger.info("Chip read: " + uid)
         nfc = MsgNfc(uid)
         message = json.dumps(nfc, default=lambda o: o.__dict__)
         logger.info("Publish: " + message)
         publish(message)
+        time.sleep(5)
     time.sleep(3)
