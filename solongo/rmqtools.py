@@ -1,9 +1,9 @@
 import pika
 
-from solongo.config import ReadConfig
+from solongo.config import readconfig
 
 def publish(message):
-    config = ReadConfig()
+    config = readconfig()
 
     host = config.get('RMQ', 'host') or 'localhost'
     user = config.get('RMQ', 'user')
@@ -21,7 +21,7 @@ def publish(message):
 
 
 def get_receiver(queue, durable):
-    config = ReadConfig()
+    config = readconfig()
 
     host = config.get('RMQ', 'host') or 'localhost'
     user = config.get('RMQ', 'user')

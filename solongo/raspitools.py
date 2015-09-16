@@ -1,6 +1,6 @@
-from RPi import GPIO
 import nxppy
 import time
+from RPi import GPIO
 
 GREEN = 47
 RED = 35

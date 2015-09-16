@@ -1,3 +1,4 @@
 pika
 elasticsearch
 slackclient
+nxppy

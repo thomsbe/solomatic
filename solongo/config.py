@@ -1,7 +1,7 @@
 import ConfigParser
 
 
-def ReadConfig():
+def readconfig():
     config = ConfigParser.RawConfigParser()
     config.read('solomatic.cfg')
     return config

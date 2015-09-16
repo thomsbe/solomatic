@@ -2,11 +2,11 @@ import json
 
 from elasticsearch import Elasticsearch
 
-from solongo.config import ReadConfig
+from solongo.config import readconfig
 
 
 def store_es(message):
-    config = ReadConfig()
+    config = readconfig()
 
     host = config.get('ES', 'host') or 'localhost'
     port = config.get('ES', 'port') or 9200
