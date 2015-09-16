@@ -1,7 +1,7 @@
 import re
 import time
 from solongo.config import readconfig
-from solongo.raspitools import blinkled, GREEN, RED
+from solongo.raspitools import blinkled, GREEN, RED, init_gpio
 from solongo.rmqtools import get_receiver
 from solongo.tools import create_logger
 import json
@@ -40,6 +40,7 @@ server = config.get('TIMR', 'server') or 'timr.solongo.office'
 uri = config.get('TIMR', 'uri') or '/api/cardreader?id='
 
 logger = create_logger()
+init_gpio()
 
 queue = 'call-timr'
 channel = get_receiver(queue, False)
