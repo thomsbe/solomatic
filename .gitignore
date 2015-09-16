@@ -1,2 +1,4 @@
 /.idea
 /solomatic.iml
+solomatic.cfg
+*.pyc
