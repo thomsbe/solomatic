@@ -1,7 +1,7 @@
 import json
 import time
 
-from solongo.raspitools import RED, init_gpio, init_mifare, get_uid, blinkled, GREEN
+from solongo.raspitools import RED, init_gpio, init_mifare, get_uid, blinkled, GREEN, piep
 from solongo.rmqtools import publish
 from solongo.tools import create_logger
 from solongo.types import MsgNfc
@@ -19,6 +19,10 @@ while True:
         message = json.dumps(nfc, default=lambda o: o.__dict__)
         logger.info("Publish: " + message)
         publish(message)
-        blinkled(GREEN, 0.5, True)
-        time.sleep(5)
-    time.sleep(3)
+        blinkled(GREEN, 0.1, True)
+        time.sleep(0.2)
+        piep(0.1)
+        time.sleep(0.2)
+        piep(0.1)
+        time.sleep(3)
+    time.sleep(1)
