@@ -15,7 +15,7 @@ def on_message(channel, method_frame, header_frame, body):
     message = json.loads(body)
     if message['type'] == 'nfc.uuid.read':
         logger.info('Got message! Call Timr.')
-        logger.debug('Message: ' + json.dump(message))
+        logger.debug('Message: ' + json.dumps(message))
         conn = httplib.HTTPConnection(server, 80, timeout=5)
         conn.request("GET", uri + message["uuid"])
 
