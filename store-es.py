@@ -7,7 +7,7 @@ from solongo.tools import create_logger
 
 def on_message(channel, method_frame, header_frame, body):
     logger.info('Got Message! Store in ES.')
-    logger.debug(json.dumps(body))
+    logger.debug(json.dumps(body, default=lambda o: o.__dict__))
     store_es(body)
     channel.basic_ack(delivery_tag=method_frame.delivery_tag)
 
