@@ -25,8 +25,8 @@ def on_message(channel, method_frame, header_frame, body):
             logger.info('Reply from Timr: ' + ret)
             if re.match('\d', ret) is not None:
                 for i in range(0, int(ret)):
-                    blinkled(GREEN, 0.1, True)
-                    time.sleep(0.2)
+                    blinkled(GREEN, 0.05, True)
+                    time.sleep(0.1)
             else:
                 for i in range(0, 6):
                     blinkled(RED, 0.02, True)
