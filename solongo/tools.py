@@ -2,9 +2,9 @@ import logging
 import logging.handlers
 
 
-def create_logger():
+def create_logger(filename):
     # LOG_FILENAME = "/var/log/nfc.log"
-    LOG_FILENAME = "solomatic.log"
+    LOG_FILENAME = filename
     LOG_LEVEL = logging.INFO
 
     logger = logging.getLogger(__name__)

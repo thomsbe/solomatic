@@ -8,7 +8,7 @@ from solongo.rmqtools import publish
 from solongo.tools import create_logger
 from solongo.types import MsgNfc
 
-logger = create_logger()
+logger = create_logger('nfc-reader.log')
 logger.info("NFC Start")
 init_gpio()
 mifare = init_mifare()

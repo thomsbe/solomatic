@@ -44,11 +44,13 @@ config = readconfig()
 server = config.get('TIMR', 'server') or 'timr.solongo.office'
 uri = config.get('TIMR', 'uri') or '/api/cardreader?id='
 
-logger = create_logger()
+logger = create_logger('call-timr.log')
+logger.info('Call-Timr: Start')
 init_gpio()
 
 queue = 'call-timr'
 channel = get_receiver(queue, False)
 channel.basic_consume(on_message, queue)
 
+logger.info('Start Consuming.')
 channel.start_consuming()
