@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from solongo.estools import store_es
 from solongo.rmqtools import get_receiver
 from solongo.tools import create_logger

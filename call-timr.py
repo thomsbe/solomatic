@@ -1,11 +1,14 @@
+#!/usr/bin/python
+
+import httplib
+import json
 import re
 import time
+
 from solongo.config import readconfig
 from solongo.raspitools import blinkled, GREEN, RED, init_gpio
 from solongo.rmqtools import get_receiver
 from solongo.tools import create_logger
-import json
-import httplib
 
 
 def on_message(channel, method_frame, header_frame, body):
