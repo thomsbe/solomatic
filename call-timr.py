@@ -14,13 +14,15 @@ from solongo.tools import create_logger
 def on_message(channel, method_frame, header_frame, body):
     message = json.loads(body)
     if message['type'] == 'nfc.uuid.read':
+        logger.info('Got message! Call Timr.')
+        logger.debug('Message: ' + json.dump(message))
         conn = httplib.HTTPConnection(server, 80, timeout=5)
         conn.request("GET", uri + message["uuid"])
 
         r = conn.getresponse()
         if r.status == 200:
             ret = r.getheader('X-Return')
-            print(ret)
+            logger.info('Reply from Timr: ' + ret)
             if re.match('\d', ret) is not None:
                 for i in range(0, int(ret)):
                     blinkled(GREEN, 0.1, True)
