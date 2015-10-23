@@ -46,3 +46,9 @@ def get_uid(mifare, color, time, logger):
 
         logger.error('generic exception: ' + traceback.format_exc())
         return None
+
+
+def piep(duration):
+    GPIO.output(PIEP, ON)
+    time.sleep(duration)
+    GPIO.output(PIEP, OFF)
